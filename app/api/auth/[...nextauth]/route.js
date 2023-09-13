@@ -59,6 +59,7 @@ export const authOptions = {
           await User.create({
             email: profile.email,
             name: profile.name.replace(" ", "").toLowerCase(),
+            isVerified: true
             // You can add more properties here as needed
           });
         }
