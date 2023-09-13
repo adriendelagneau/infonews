@@ -10,7 +10,7 @@ export const POST = async (request) => {
     const reqBody = await request.json();
     const { token } = reqBody;
 
-    console.log("Received token:", typeof token, token);
+    console.log("Received token:", token);
 
     const user = await User.findOne({
       verifyToken: token,

@@ -23,7 +23,7 @@ const userSchema = new Schema(
     },
     isVerified: {
       type: Boolean,
-      default: false, // Default value is false, change as needed
+      default: false, 
     },
     verifyToken: {
       type: String
