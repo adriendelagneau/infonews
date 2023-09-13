@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import SubscribePopup from '@/components/SubscribePopup';
+
 
 async function getData(id) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/articles/${id}`, {
@@ -29,7 +29,7 @@ const page = async ({ params }) => {
   const data = await getData(params.id);
   return (
     <div>
-      <SubscribePopup />
+
       <div>{data.content.map((c, i) => (
         <div key={i}>
           <div >{c.title}</div>
