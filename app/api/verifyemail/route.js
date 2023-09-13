@@ -1,3 +1,5 @@
+import connect from "@/lib/db";
+
 export const POST = async (request) => {
   await connect();
 
