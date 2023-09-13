@@ -63,7 +63,7 @@ const Navbar = () => {
 
         <div className="flex w-auto">
           <div className='hidden md:inline'>
-            <Link href="/subscribe" className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"  onClick={() => closeMenu()}>Subscribe</Link>
+            <Link href="/" className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"  onClick={() => closeMenu()}>Subscribe</Link>
           </div>
           <div className="pl-5">
             <Link href="/login" className="p-2 rounded-full hover:bg-gray-100" onClick={() => closeMenu()}>Connect</Link>
