@@ -15,9 +15,8 @@ export const POST = async (request) => {
       
       let user
       try {
-         user = await  User.findOne(
-              { verifyToken: token }
-        )
+        user = await User.findOne({ verifyToken: token })
+        console.log(user)
         
       } catch (err) {
         console.log("here", err)
