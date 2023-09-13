@@ -17,11 +17,11 @@ export const POST = async (request) => {
             { verifyToken: token },
           //  {verifyTokenExpires: {$gt: Date.now()}}
       )
-        
+        console.log("titi", user)
         if (!user) {
             return NextResponsejson({error: "invalid token"}, { status: 400 });
         }
-        console.log(user, "ww")
+     
 
         user.isVerified = true
         user.verifyToken = undefined
