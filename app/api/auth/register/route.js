@@ -17,7 +17,7 @@ export async function POST(req) {
 
     await savedUser.save()
     console.log(savedUser)
-    await sendEmail(email,"VERIFY", savedUser._id)
+    await sendEmail(savedUser.email,"VERIFY", savedUser._id)
 
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
