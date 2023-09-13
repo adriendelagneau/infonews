@@ -4,7 +4,8 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import GoogleProvider from "next-auth/providers/google"
-import { toast } from 'react-toastify';
+
+
 
 export const authOptions = {
   providers: [
@@ -23,13 +24,13 @@ export const authOptions = {
             console.log("no user")
             return null;
           }
-
+          
           const passwordsMatch = await bcrypt.compare(password, user.password);
-
+          
           if (!passwordsMatch) {
             return null;
           }
-
+          
           return user;
         } catch (error) {
           console.log("Error: ", error);
@@ -38,8 +39,8 @@ export const authOptions = {
     }),
 
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
 
   ],
