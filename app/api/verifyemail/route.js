@@ -11,15 +11,22 @@ export const POST = async (request) => {
         const reqBody = await request.json()
         const { token } = reqBody
 
-      console.log(typeof(token), token)
+      console.log(typeof (token), token)
       
-      const user = await  User.findOne(
-            { verifyToken: token }
-      )
+      let user
+      try {
+         user = await  User.findOne(
+              { verifyToken: token }
+        )
+        
+      } catch (err) {
+        console.log("here", err)
+      }
+      
+      if (!user) {
+          return NextResponsejson({error: "invalid token"}, { status: 400 });
+      }
         console.log("titi", user)
-        if (!user) {
-            return NextResponsejson({error: "invalid token"}, { status: 400 });
-        }
      
 
         user.isVerified = true
