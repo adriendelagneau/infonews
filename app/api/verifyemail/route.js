@@ -2,15 +2,17 @@ import { NextResponse } from "next/server"
 import connect from "@/lib/db";
 import User from "@/models/User";
 
-connect();
 
 export const POST = async (request) => {
-
+  
+  await connect();
 
     try {
         const reqBody = await request.json()
         const { token } = reqBody
 
+      console.log(token)
+      
       const user = await  User.findOne(
             { verifyToken: token },
           //  {verifyTokenExpires: {$gt: Date.now()}}
