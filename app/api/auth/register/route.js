@@ -16,8 +16,8 @@ export async function POST(req) {
     const savedUser =  new User({ name, email, password: hashedPassword });
 
     await savedUser.save()
-    console.log(savedUser)
-    await sendEmail({ email, emailType: "VERIFY", userId: newUser._id });
+
+    await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
