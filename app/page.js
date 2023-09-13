@@ -1,4 +1,4 @@
-import Card from '@/components/server/Card';
+import Card from '@/components/Card';
 import CardSM from '@/components/CardSM';
 
 
