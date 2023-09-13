@@ -14,8 +14,7 @@ export const POST = async (request) => {
       console.log(token)
       
       const user = await  User.findOne(
-            { verifyToken: token },
-          //  {verifyTokenExpires: {$gt: Date.now()}}
+            { verifyToken: token }
       )
         console.log("titi", user)
         if (!user) {
