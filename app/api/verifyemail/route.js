@@ -11,7 +11,7 @@ export const POST = async (request) => {
         const reqBody = await request.json()
         const { token } = reqBody
 
-      console.log(token)
+      console.log(typeof(token), token)
       
       const user = await  User.findOne(
             { verifyToken: token }
