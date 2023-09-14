@@ -2,6 +2,8 @@
 import getStripe from '@/utils/get-stripe';
 import React from 'react'
 import { useSession } from "next-auth/react";
+import { subscriptionData } from '@/constants';
+import CardSubscription from '@/components/CardSubscription';
 
 const Subscribe = () => {
   const { data: session } = useSession()
@@ -38,8 +40,26 @@ const Subscribe = () => {
         }
          
   }
-  return (
-    <div data-value='Basic' onClick={(e)=>pay(e)} className="mt-[300px]">CheckoutButton</div>
+
+    return (
+    <main className="min-h-[200vh] max-w-7xl mt-24 mx-auto flex justify-between px-5 font-libreBaskerville pt-[200px]">
+   
+      {
+        subscriptionData.map((d,i) => (
+          <CardSubscription
+          key={i}
+          color={d.bgColor}
+            title={d.title}
+            price={d.price}
+            pricePerMonth={d.pricePerMonth}
+            />
+            ))
+          }
+
+
+           
+          <div data-value='Basic' onClick={(e)=>pay(e)} className="mt-[300px]">CheckoutButton</div>
+    </main>
   )
 }
 
