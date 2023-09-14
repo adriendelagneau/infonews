@@ -4,16 +4,18 @@ import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import NavbarCategory from '../components/NavbarCategory'
 import NavbarTitle from '../components/NavbarTitle'
-import { signOut, useSession } from "next-auth/react";
 import { MenuContext } from '@/context/MenuContext';
-import SignoutButton from './SignoutButton';
 
-import { usePathname } from 'next/navigation';
+import { useSession } from "next-auth/react";
+
+
 
 const Navbar = () => {
   const [showTitle, setShowTitle] = useState(false);
-  const session = useSession();
   const { toggle, closeMenu } = useContext(MenuContext)
+
+  const { data: session } = useSession()
+
 
 
 
@@ -35,7 +37,7 @@ const Navbar = () => {
     };
   }, []);
 
- 
+
 
   return (
     <>
@@ -63,12 +65,23 @@ const Navbar = () => {
 
         <div className="flex w-auto">
           <div className='hidden md:inline'>
-            <Link href="/" className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"  onClick={() => closeMenu()}>Subscribe</Link>
+            <Link href="/subscribe" className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500" onClick={() => closeMenu()}>Subscribe</Link>
           </div>
-          <div className="pl-5">
-            <Link href="/login" className="p-2 rounded-full hover:bg-gray-100" onClick={() => closeMenu()}>Connect</Link>
-          </div>
-      
+
+          {session?.user ?
+            (
+              <div className="pl-5">
+                <Link href="/profile" className="p-2 rounded-full hover:bg-gray-100" onClick={() => closeMenu()}>Profile</Link>
+              </div>
+            ) : (
+
+              <div className="pl-5">
+                <Link href="/login" className="p-2 rounded-full hover:bg-gray-100" onClick={() => closeMenu()}>Connect</Link>
+              </div>
+            )
+          }
+
+
         </div>
 
       </nav>
